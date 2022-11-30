@@ -1,8 +1,6 @@
-export class Status {
-    constructor(
-        public updated_at: Date,
-        public dependencies: Dependencies,
-    ) {  }
+export interface Status {
+  updated_at: Date
+  dependencies: Dependencies
 }
 
 export interface Dependencies {
