@@ -1,3 +1,4 @@
-export * from "./models/Post.class"
-export * from "./models/Client.class"
-export * from "./models/api"
+import Api from './v1'
+export * from "./v1"
+
+export default Api
