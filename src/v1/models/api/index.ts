@@ -1,7 +1,3 @@
-import * as Error from "./Error"
-import * as Status from "./Status"
-
-export const API = {
-    ...Error,
-    ...Status,
-}
+export { Error } from "./Error"
+export { Session } from "./Session"
+export { Database, Dependencies, Latency, Status, Webserver } from "./Status"
