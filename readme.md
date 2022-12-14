@@ -33,6 +33,7 @@ As seguintes tecnologias foram empregadas na criação deste projeto:
 ## ‍👨‍💻 Instalação
 ```sh-session
 npm install tabnews.ts
+# ou
 yarn add tabnews.ts
 ```
 
