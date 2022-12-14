@@ -1,4 +1,4 @@
-import { PostFeatures } from "../"
+import { Post, PostFeatures } from "../"
 
 export class Client {
     constructor(
@@ -11,6 +11,24 @@ export class Client {
         public created_at: Date,
         public updated_at: Date | null,
     ) {  }
+
+    public createPost(): boolean { // to-do
+        return true;
+    }
+
+    public readPost(slug: string): Post { // to-do
+        return new Post();
+    }
+
+    public updatePost(slug: string, body: string): boolean { // to-do
+        return true;
+    }
+
+    public deletePost(): boolean { // to-do
+        return true;
+    }
+
+    public 
 }
 
 export enum ClientFeatures {
