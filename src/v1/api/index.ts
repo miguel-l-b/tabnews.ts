@@ -1,39 +1,45 @@
-import axios from "axios"
-import { Session } from "../models/api/Session"
-
+import axios, { AxiosError, AxiosInstance } from "axios"
+import { API } from "../"
+import ApiUsers from "./users"
 export default class Api {
-    private route;
+    private route: AxiosInstance;
+    private isLogged: boolean = false;
     constructor(
         private token?: string
     ) {
         this.route = axios.create({
             baseURL: `https://www.tabnews.com.br/api/v1`,
             headers: {
-                Cookie: token? `session_id=${token}` : "",
+                Cookie: token? `session_id=${token}; Max-Age=2592000; Path=/; Secure; HttpOnly; Domain=www.tabnews.com.br` : "",
                 head: {
                     setContentType: "application/json"
                 }
             },
-        });
+        })
+
+        this.verifyToken()
     }
 
-    public async login(email: String, password: String): Promise<Session> {
-        return await this.route.post("/session", {
-            email,
-            password,
-        }).then(e => {
-            const { data } = e;
-            return {
-                id: data.id,
-                token: data.token,
-                expires_at: new Date(data.expires_at),
-                created_at: new Date(data.created_at),
-                updated_at: new Date(data.updated_at),
-            }
-        })
-        .catch(e => {
-            console.log(e)
-            throw new Error(e)
-        });
+    private verifyToken() {
+        this.route.get("/sessions")
+            .then(e => {
+                this.isLogged = true
+            })
+            .catch(e => {
+                this.isLogged = false
+            })
     }
+
+    public async login(email: string, password: string): Promise<API.Session | AxiosError> {
+        return await this.route.post("/sessions", {
+                email,
+                password,
+        })
+            .then(e => {
+                return e.data
+            })
+            .catch((e: AxiosError) => e)
+    }
+
+    users = () => new ApiUsers(this.route)
 }
