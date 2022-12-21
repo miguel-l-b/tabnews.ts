@@ -12,23 +12,21 @@ export class Client {
         public updated_at: Date | null,
     ) {  }
 
-    public createPost(): boolean { // to-do
-        return true;
-    }
+    // public createPost(): boolean { // to-do
+    //     return true;
+    // }
 
-    public readPost(slug: string): Post { // to-do
-        return new Post();
-    }
+    // public readPost(slug: string): Post { // to-do
+    //     return new Post();
+    // }
 
-    public updatePost(slug: string, body: string): boolean { // to-do
-        return true;
-    }
+    // public updatePost(slug: string, body: string): boolean { // to-do
+    //     return true;
+    // }
 
-    public deletePost(): boolean { // to-do
-        return true;
-    }
-
-    public 
+    // public deletePost(): boolean { // to-do
+    //     return true;
+    // }
 }
 
 export enum ClientFeatures {
